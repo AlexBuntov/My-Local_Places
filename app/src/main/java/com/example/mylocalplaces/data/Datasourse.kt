@@ -3,8 +3,8 @@ package com.example.mylocalplaces.data
 import com.example.mylocalplaces.R
 
 object Places {
-    val supermarkets = listOf<Place>(
-        Place(
+    val supermarkets = listOf<ItemInfo>(
+        ItemInfo(
             id = 0,
             nameId = R.string.pyaterochka,
             description = "\"Пятёрочка\" – это одна из крупнейших российских сетей продуктовых супермаркетов формата \"магазин у дома\", предлагающая широкий и постоянно обновляемый ассортимент продуктов питания, напитков, товаров для дома и бытовой химии по доступным ценам.",
@@ -13,7 +13,7 @@ object Places {
             address = "бул. Маршала Рокоссовского, 15, стр. 1",
             imageId = R.drawable.pyat
         ),
-        Place(
+        ItemInfo(
             id = 1,
             nameId = R.string.dixi,
             description = "\"Дикси\" – это федеральная сеть продуктовых дискаунтеров в России, ориентированная на предложение товаров первой необходимости и повседневного спроса по конкурентным ценам.",
@@ -22,7 +22,7 @@ object Places {
             address = "бул. Маршала Рокоссовского, 6",
             imageId = R.drawable.dixi
         ),
-        Place(
+        ItemInfo(
             id = 2,
             nameId = R.string.vkusvill,
             description = "\"ВкусВилл\" – сеть супермаркетов здорового питания, специализирующаяся на натуральных продуктах с короткими сроками хранения, готовых блюдах и строгим контролем качества.",
@@ -31,7 +31,7 @@ object Places {
             address = "бул. Маршала Рокоссовского, 4",
             imageId = R.drawable.vkusvill
         ),
-        Place(
+        ItemInfo(
             id = 3,
             nameId = R.string.perekrestok,
             description = "\"Перекрёсток\" – это федеральная сеть супермаркетов, предлагающая широкий ассортимент высококачественных продуктов, готовых блюд, а также отделы с выпечкой, кофе и специализированными товарами.",
@@ -40,7 +40,7 @@ object Places {
             address = "Открытое ш., 4, стр. 1",
             imageId = R.drawable.perekrestok
         ),
-        Place(
+        ItemInfo(
             id = 4,
             nameId = R.string.myasnov,
             description = "\"Мяснов\" – это сеть магазинов-кулинарий, специализирующаяся на высококачественных мясных продуктах, молочной продукции, а также сопутствующих товарах, с акцентом на свежесть и натуральность.",
@@ -53,28 +53,28 @@ object Places {
 }
 
 object Categories {
-    val categories = listOf<Category>(
-        Category(
+    val categories = listOf<ItemInfo>(
+        ItemInfo(
             id = 0,
             nameId = R.string.supermarkets,
             imageId = R.drawable.market
         ),
-        Category(
+        ItemInfo(
             id = 1,
             nameId = R.string.alcomarkets,
             imageId = R.drawable.beer
         ),
-        Category(
+        ItemInfo(
             id = 2,
             nameId = R.string.marketplaces,
             imageId = R.drawable.courier
         ),
-        Category(
+        ItemInfo(
             id = 3,
             nameId = R.string.restaurants,
             imageId = R.drawable.restaurants
         ),
-        Category(
+        ItemInfo(
             id = 4,
             nameId = R.string.flowershops,
             imageId = R.drawable.flower_shop

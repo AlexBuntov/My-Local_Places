@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -38,25 +37,29 @@ fun PlaceImage (
 
 @Composable
 fun PlaceReviewAndAddress (
-    rating: String,
-    address: String,
+    rating: String?,
+    address: String?,
     modifier: Modifier = Modifier
 ){
     Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
-        Icon(
-            imageVector = Icons.Default.Star,
-            contentDescription = null
-        )
+        rating?.let {
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = null
+            )
         Text(
             text = "Рейтинг: ${rating}",
             modifier = Modifier.weight(1f)
         )
+        }
+        address?.let {
         Text(
             text = "Адрес: ${address}",
             modifier = Modifier.weight(1f)
         )
+        }
     }
 }
 
@@ -67,3 +70,14 @@ fun PlaceDescription (description: String) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PlaceHeader (headerTitle: String) {
+    CenterAlignedTopAppBar(
+        title = {
+            Text(
+                text = headerTitle
+            )
+        }
+    )
+}

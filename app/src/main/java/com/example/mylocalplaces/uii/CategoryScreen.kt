@@ -6,19 +6,19 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.mylocalplaces.data.Categories
-import com.example.mylocalplaces.data.DefaultItemInfo
+import com.example.mylocalplaces.data.ItemInfo
 import com.example.mylocalplaces.data.Places
 import com.example.mylocalplaces.ui.theme.MyLocalPlacesTheme
 
 @Composable
 fun CategoryScreen (
-    items: List<DefaultItemInfo>,
+    title: String,
+    items: List<ItemInfo>,
 ){
     Scaffold(
         topBar = {
             ScreenHeader(
-                headerTitle = items[0].title
+                headerTitle = title
             )
         }
     ) { innerPadding ->
@@ -38,6 +38,7 @@ private fun CategoryScreenPreview () {
     MyLocalPlacesTheme() {
         CategoryScreen(
             items = Places.supermarkets,
+            title = "Pohui"
         )
     }
 }

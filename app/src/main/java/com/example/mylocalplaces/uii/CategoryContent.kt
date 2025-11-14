@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,7 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,20 +22,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.mylocalplaces.data.Categories
-import com.example.mylocalplaces.data.DefaultItemInfo
-import com.example.mylocalplaces.data.Place
+import com.example.mylocalplaces.data.ItemInfo
 import com.example.mylocalplaces.data.Places
 import com.example.mylocalplaces.ui.theme.MyLocalPlacesTheme
 
 @Composable
-fun CategoriesListItemImage (itemInfo: DefaultItemInfo, modifier: Modifier){
+fun CategoriesListItemImage(itemInfo: ItemInfo, modifier: Modifier) {
     Box(
         modifier = modifier
     ) {
@@ -51,11 +45,9 @@ fun CategoriesListItemImage (itemInfo: DefaultItemInfo, modifier: Modifier){
 }
 
 @Composable
-fun CategoriesListItem (
-    itemInfo: DefaultItemInfo,
-    onItemClick: (DefaultItemInfo) -> Unit,
-    modifier: Modifier = Modifier
-){
+fun CategoriesListItem(
+    itemInfo: ItemInfo, onItemClick: (ItemInfo) -> Unit, modifier: Modifier = Modifier
+) {
     Card(
         elevation = CardDefaults.cardElevation(2.dp),
         onClick = { onItemClick(itemInfo) },
@@ -67,8 +59,7 @@ fun CategoriesListItem (
                 .size(128.dp)
         ) {
             CategoriesListItemImage(
-                itemInfo = itemInfo,
-                modifier = Modifier.size(128.dp)
+                itemInfo = itemInfo, modifier = Modifier.size(128.dp)
             )
             Column(
                 modifier = Modifier
@@ -76,7 +67,7 @@ fun CategoriesListItem (
                     .weight(1f)
             ) {
                 Text(
-                    text = stringResource(itemInfo.nameId) ,
+                    text = stringResource(itemInfo.nameId),
                     style = MaterialTheme.typography.titleMedium,
                 )
                 Spacer(Modifier.weight(1f))
@@ -87,8 +78,7 @@ fun CategoriesListItem (
                             contentDescription = null,
                         )
                         Text(
-                            text = ratingValue,
-                            style = MaterialTheme.typography.bodySmall
+                            text = ratingValue, style = MaterialTheme.typography.bodySmall
                         )
                     }
                 }
@@ -99,31 +89,29 @@ fun CategoriesListItem (
 
 @Composable
 fun CategoriesList(
-    items: List<DefaultItemInfo>,
-    onItemClick: (DefaultItemInfo) -> Unit,
+    items: List<ItemInfo>,
+    onItemClick: (ItemInfo) -> Unit,
     modifier: Modifier,
-){
-    LazyColumn (
+) {
+    LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier,
     ) {
-        items(items = items, key = {it -> it.id}) { it ->
+        items(items = items, key = { it.id }) {
             CategoriesListItem(
-                itemInfo = it,
-                onItemClick = onItemClick
+                itemInfo = it, onItemClick = onItemClick
             )
         }
     }
 }
 
 
-
-@Preview ()
+@Preview()
 @Composable
-private fun CategoriesListPreview(){
-    MyLocalPlacesTheme() {
+private fun CategoriesListPreview() {
+    MyLocalPlacesTheme {
         CategoriesList(
-            items = Categories.categories,
+            items = Places.supermarkets,
             onItemClick = { Places.supermarkets },
             modifier = Modifier,
         )
