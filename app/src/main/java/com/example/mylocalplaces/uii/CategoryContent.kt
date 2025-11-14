@@ -30,17 +30,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.mylocalplaces.data.Categories
+import com.example.mylocalplaces.data.DefaultItemInfo
 import com.example.mylocalplaces.data.Place
 import com.example.mylocalplaces.data.Places
 import com.example.mylocalplaces.ui.theme.MyLocalPlacesTheme
 
 @Composable
-fun CategoriesListItemImage (place: Place, modifier: Modifier){
+fun CategoriesListItemImage (itemInfo: DefaultItemInfo, modifier: Modifier){
     Box(
         modifier = modifier
     ) {
         Image(
-            painter = painterResource(place.imageId),
+            painter = painterResource(itemInfo.imageId),
             contentDescription = null,
             alignment = Alignment.Center,
             contentScale = ContentScale.Crop
@@ -50,11 +52,13 @@ fun CategoriesListItemImage (place: Place, modifier: Modifier){
 
 @Composable
 fun CategoriesListItem (
-    place: Place,
+    itemInfo: DefaultItemInfo,
+    onItemClick: (DefaultItemInfo) -> Unit,
     modifier: Modifier = Modifier
 ){
     Card(
         elevation = CardDefaults.cardElevation(2.dp),
+        onClick = { onItemClick(itemInfo) },
         modifier = modifier
     ) {
         Row(
@@ -63,7 +67,7 @@ fun CategoriesListItem (
                 .size(128.dp)
         ) {
             CategoriesListItemImage(
-                place = place,
+                itemInfo = itemInfo,
                 modifier = Modifier.size(128.dp)
             )
             Column(
@@ -72,19 +76,21 @@ fun CategoriesListItem (
                     .weight(1f)
             ) {
                 Text(
-                    text = stringResource(place.nameId) ,
+                    text = stringResource(itemInfo.nameId) ,
                     style = MaterialTheme.typography.titleMedium,
                 )
                 Spacer(Modifier.weight(1f))
-                Row (verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = Icons.Outlined.Star,
-                        contentDescription = null,
-                    )
-                    Text(
-                        text = place.rating,
-                        style = MaterialTheme.typography.bodySmall
-                    )
+                itemInfo.rating?.let { ratingValue ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Outlined.Star,
+                            contentDescription = null,
+                        )
+                        Text(
+                            text = ratingValue,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
                 }
             }
         }
@@ -93,20 +99,19 @@ fun CategoriesListItem (
 
 @Composable
 fun CategoriesList(
-    places: List<Place>,
-    modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    items: List<DefaultItemInfo>,
+    onItemClick: (DefaultItemInfo) -> Unit,
+    modifier: Modifier,
 ){
     LazyColumn (
-        contentPadding = contentPadding,
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier,
     ) {
-        items(items = places, key = {place -> place.id}) { place ->
+        items(items = items, key = {it -> it.id}) { it ->
             CategoriesListItem(
-                place = place
+                itemInfo = it,
+                onItemClick = onItemClick
             )
-
         }
     }
 }
@@ -118,7 +123,8 @@ fun CategoriesList(
 private fun CategoriesListPreview(){
     MyLocalPlacesTheme() {
         CategoriesList(
-            places = Places.allPlaces,
+            items = Categories.categories,
+            onItemClick = { Places.supermarkets },
             modifier = Modifier,
         )
     }

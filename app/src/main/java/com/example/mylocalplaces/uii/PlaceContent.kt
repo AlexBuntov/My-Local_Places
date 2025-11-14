@@ -1,20 +1,17 @@
 package com.example.mylocalplaces.uii
 
-import android.media.Rating
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -70,14 +67,3 @@ fun PlaceDescription (description: String) {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun PlaceHeader (headerTitle: String) {
-    CenterAlignedTopAppBar(
-        title = {
-            Text(
-                text = headerTitle
-            )
-        }
-    )
-}

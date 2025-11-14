@@ -3,7 +3,7 @@ package com.example.mylocalplaces.data
 import com.example.mylocalplaces.R
 
 object Places {
-    val allPlaces = listOf<Place>(
+    val supermarkets = listOf<Place>(
         Place(
             id = 0,
             nameId = R.string.pyaterochka,
@@ -48,6 +48,36 @@ object Places {
             rating = "4,5/5",
             address = "бул. Маршала Рокоссовского, 8, корп. 2",
             imageId = R.drawable.myasnov
+        )
+    )
+}
+
+object Categories {
+    val categories = listOf<Category>(
+        Category(
+            id = 0,
+            nameId = R.string.supermarkets,
+            imageId = R.drawable.market
+        ),
+        Category(
+            id = 1,
+            nameId = R.string.alcomarkets,
+            imageId = R.drawable.beer
+        ),
+        Category(
+            id = 2,
+            nameId = R.string.marketplaces,
+            imageId = R.drawable.courier
+        ),
+        Category(
+            id = 3,
+            nameId = R.string.restaurants,
+            imageId = R.drawable.restaurants
+        ),
+        Category(
+            id = 4,
+            nameId = R.string.flowershops,
+            imageId = R.drawable.flower_shop
         )
     )
 }

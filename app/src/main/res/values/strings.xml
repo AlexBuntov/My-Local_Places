@@ -5,4 +5,9 @@
     <string name="vkusvill">ВкусВилл</string>
     <string name="perekrestok">Перекрёсток</string>
     <string name="myasnov">Мяснов</string>
+    <string name="supermarkets">Супермаркеты</string>
+    <string name="alcomarkets">Алкомаркеты</string>
+    <string name="marketplaces">Маркетплейсы</string>
+    <string name="restaurants">Рестораны</string>
+    <string name="flowershops">Цветочные магазины</string>
 </resources>
